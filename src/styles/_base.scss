@@ -1,0 +1,26 @@
+@import './variables';
+@import './fonts';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: $font-family-primary, $font-family-fallback;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: $color-white;
+  min-height: 100vh;
+}
+
+code {
+  font-family: $font-family-mono;
+}
+
+#root {
+  min-height: 100vh;
+}
+
