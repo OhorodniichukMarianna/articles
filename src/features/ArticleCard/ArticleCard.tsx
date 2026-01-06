@@ -19,13 +19,6 @@ interface ArticleCardProps {
   onCardClick: (id: number) => void;
 }
 
-const truncateDescription = (description: string, maxLength: number = 100): string => {
-  if (description.length <= maxLength) {
-    return description;
-  }
-  return description.substring(0, maxLength) + '...';
-};
-
 export const ArticleCard: React.FC<ArticleCardProps> = ({
   article,
   searchKeywords,
