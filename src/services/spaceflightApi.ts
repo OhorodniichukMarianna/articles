@@ -53,55 +53,11 @@ export const spaceflightApi = createApi({
       query: (id) => `articles/${id}/`,
       transformResponse: (response: SpaceflightArticle): Article => transformArticle(response),
     }),
-    
-    getBlogs: builder.query<TransformedArticlesResponse, {
-      limit?: number;
-      offset?: number;
-      search?: string;
-    }>({
-      query: (params) => ({
-        url: 'blogs/',
-        params: {
-          limit: params.limit || 25,
-          offset: params.offset || 0,
-          ...(params.search && { search: params.search }),
-        },
-      }),
-      transformResponse: (response: ArticlesResponse): TransformedArticlesResponse => ({
-        count: response.count,
-        next: response.next,
-        previous: response.previous,
-        results: response.results.map(transformArticle),
-      }),
-    }),
-    
-    getReports: builder.query<TransformedArticlesResponse, {
-      limit?: number;
-      offset?: number;
-      search?: string;
-    }>({
-      query: (params) => ({
-        url: 'reports/',
-        params: {
-          limit: params.limit || 25,
-          offset: params.offset || 0,
-          ...(params.search && { search: params.search }),
-        },
-      }),
-      transformResponse: (response: ArticlesResponse): TransformedArticlesResponse => ({
-        count: response.count,
-        next: response.next,
-        previous: response.previous,
-        results: response.results.map(transformArticle),
-      }),
-    }),
   }),
 });
 
 export const {
   useGetArticlesQuery,
   useGetArticleByIdQuery,
-  useGetBlogsQuery,
-  useGetReportsQuery,
 } = spaceflightApi;
 
